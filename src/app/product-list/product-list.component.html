@@ -6,26 +6,30 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 -->
+<br/>
 
 <div *ngFor="let product of products; index as productId">
 
-  <h3>
-    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+<div class="card border-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header"><a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
       {{ product.name }}
-    </a>
-  </h3>
-
-  <p *ngIf="product.description">
+    </a></div>
+  <div class="card-body">
+    <p *ngIf="product.description">
     Description: {{ product.description }}
   </p>
 
-   <button (click)="share()">
-    Share
-  </button>
+   <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <button (click)="share()">
+      Share
+    </button>
 
-  <app-product-alerts 
-    [product]="product"
-    (notify)="onNotify()">
-  </app-product-alerts>
+    <app-product-alerts 
+      [product]="product"
+      (notify)="onNotify()">
+    </app-product-alerts>
+   </div>
+  </div>
+</div>
 
 </div>
